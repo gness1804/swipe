@@ -6,8 +6,9 @@ import data from './src/data/dummy';
 
 export default class App extends React.Component {
   renderCard(item) {
-    return (
-        <Text>{item.text}</Text>
+    return (<View key={item.id}>
+          <Text>{item.text}</Text>
+            </View>
     );
   }
 
