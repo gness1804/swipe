@@ -13,11 +13,15 @@ class Deck extends React.Component {
     //this.state = {};
   //}
 
+  renderCards() {
+    return this.props.data.map(item => this.props.renderCard(item));
+  }
+
 
   render() {
     return (
         <View>
-          <Text>I am the Deck component.</Text>
+          {this.renderCards()}
         </View>
     );
   }
