@@ -5,7 +5,7 @@ import {
   Text,
   Animated,
 } from 'react-native';
-//import styles from '../src/styles/Deck';
+//import mainStyles from '../src/mainStyles/Deck';
 
 class Deck extends React.Component {
   //constructor(props) {
