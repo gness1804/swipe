@@ -7,7 +7,7 @@ import cardStyles from './src/styles/card';
 import data from './src/data/dummy';
 
 export default class App extends React.Component {
-  renderCard(item) {
+  renderOneCard(item) {
     const onButtonPressed = () => {
       console.log('I was pressed.');
     };
@@ -38,7 +38,7 @@ export default class App extends React.Component {
       <View style={mainStyles.container}>
         <Deck
             data={data}
-            renderCard={this.renderCard}
+            renderCard={this.renderOneCard}
         />
       </View>
     );

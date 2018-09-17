@@ -2,18 +2,24 @@
 import React from 'react';
 import {
   View,
-  Text,
-  Animated,
+  PanResponder,
 } from 'react-native';
 // import mainStyles from '../src/mainStyles/Deck';
 
 class Deck extends React.Component {
-  // constructor(props) {
-  // super(props);
-  // this.state = {};
-  // }
+  constructor(props) {
+    super(props);
 
-  renderCards() {
+    const responder = PanResponder.create({
+      // config for PR
+    });
+
+    this.state = {
+      responder,
+    };
+  }
+
+  renderAllCards() {
     const { data, renderCard } = this.props;
     return data.map(item => renderCard(item));
   }
@@ -22,7 +28,7 @@ class Deck extends React.Component {
   render() {
     return (
         <View>
-          {this.renderCards()}
+          {this.renderAllCards()}
         </View>
     );
   }
