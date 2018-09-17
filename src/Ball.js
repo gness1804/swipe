@@ -3,7 +3,7 @@ import {
   View,
   Animated,
 } from 'react-native';
-import styles from '../src/styles/ball';
+import styles from './styles/ball';
 
 class Ball extends React.Component {
   componentWillMount() {
@@ -27,4 +27,3 @@ class Ball extends React.Component {
 }
 
 export default Ball;
-

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import Ball from './src/Ball';
 import styles from './src/styles/app';
 
