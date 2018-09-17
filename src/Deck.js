@@ -5,13 +5,13 @@ import {
   Text,
   Animated,
 } from 'react-native';
-//import mainStyles from '../src/mainStyles/Deck';
+// import mainStyles from '../src/mainStyles/Deck';
 
 class Deck extends React.Component {
-  //constructor(props) {
-    //super(props);
-    //this.state = {};
-  //}
+  // constructor(props) {
+  // super(props);
+  // this.state = {};
+  // }
 
   renderCards() {
     const { data, renderCard } = this.props;
@@ -29,4 +29,3 @@ class Deck extends React.Component {
 }
 
 export default Deck;
-

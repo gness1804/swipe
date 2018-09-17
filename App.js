@@ -10,7 +10,7 @@ export default class App extends React.Component {
   renderCard(item) {
     const onButtonPressed = () => {
       console.log('I was pressed.');
-    }
+    };
 
     const { id, text, uri } = item;
     return (<Card
