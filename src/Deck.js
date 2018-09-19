@@ -11,16 +11,23 @@ class Deck extends React.Component {
   constructor(props) {
     super(props);
 
+    const position = new Animated.ValueXY();
+
     const responder = PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onPanResponderMove: (e, gesture) => {
-
+        const { dx, dy } = gesture;
+        position.setValue({
+          x: dx,
+          y: dy,
+        });
       },
       onPanResponderRelease: () => {},
     });
 
     this.state = {
       responder,
+      position,
     };
   }
 
@@ -31,12 +38,15 @@ class Deck extends React.Component {
 
 
   render() {
-    const { responder } = this.state;
+    const { responder, position } = this.state;
 
     return (
-        <View {...responder.panHandlers}>
+        <Animated.View
+            style={position.getLayout()}
+            {...responder.panHandlers}
+        >
           {this.renderAllCards()}
-        </View>
+        </Animated.View>
     );
   }
 }
