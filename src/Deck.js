@@ -2,6 +2,7 @@
 import React from 'react';
 import {
   View,
+  Animated,
   PanResponder,
 } from 'react-native';
 // import mainStyles from '../src/mainStyles/Deck';
