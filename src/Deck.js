@@ -4,7 +4,6 @@ import {
   View,
   Animated,
   PanResponder,
-  ToastAndroid,
   Dimensions,
 } from 'react-native';
 // import mainStyles from '../src/mainStyles/Deck';
@@ -27,7 +26,7 @@ class Deck extends React.Component {
         });
       },
       onPanResponderRelease: () => {
-        ToastAndroid.show('Animation stopped.', ToastAndroid.SHORT);
+        this.resetPosition();
       },
     });
 
@@ -35,6 +34,16 @@ class Deck extends React.Component {
       responder,
       position,
     };
+  }
+
+  resetPosition() {
+    Animated.spring(this.state.position, {
+      toValue: {
+        x: 0,
+        y: 0,
+      },
+      tension: 30,
+    }).start();
   }
 
   animateCard() {
