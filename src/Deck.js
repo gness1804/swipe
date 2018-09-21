@@ -31,14 +31,26 @@ class Deck extends React.Component {
     };
   }
 
+  animateCard() {
+    const { position } = this.state;
+    return {
+      ...position.getLayout(),
+      transform: [
+        {
+          rotate: '45deg',
+        },
+      ],
+    };
+  }
+
   renderAllCards() {
     const { data, renderCard } = this.props;
-    const { responder, position } = this.state;
+    const { responder } = this.state;
     return data.map((item, index) => {
       if (index === 0) {
         return (
             <Animated.View
-                style={position.getLayout()}
+                style={this.animateCard()}
                 key={item.id}
                 {...responder.panHandlers}
             >

@@ -9,7 +9,8 @@
     "eject": "expo eject",
     "lint": "eslint src App.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "echo 'no tests yet...'"
+    "test": "echo 'no tests yet...'",
+    "sites:open" : "open https://www.udemy.com/react-native-advanced/learn/v4/overview && open https://github.com/gness1804/swipe"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
