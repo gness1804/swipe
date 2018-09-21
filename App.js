@@ -1,5 +1,9 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  ToastAndroid,
+} from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
 import mainStyles from './src/styles/app';
@@ -9,7 +13,7 @@ import data from './src/data/dummy';
 export default class App extends React.Component {
   renderOneCard(item) {
     const onButtonPressed = () => {
-      console.log('I was pressed.');
+      ToastAndroid.show('Button was pressed.', ToastAndroid.SHORT);
     };
 
     const { id, text, uri } = item;

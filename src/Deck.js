@@ -4,6 +4,7 @@ import {
   View,
   Animated,
   PanResponder,
+  ToastAndroid,
 } from 'react-native';
 // import mainStyles from '../src/mainStyles/Deck';
 
@@ -22,7 +23,9 @@ class Deck extends React.Component {
           y: dy,
         });
       },
-      onPanResponderRelease: () => {},
+      onPanResponderRelease: () => {
+        ToastAndroid.show('Animation stopped.', ToastAndroid.SHORT);
+      },
     });
 
     this.state = {
@@ -33,11 +36,16 @@ class Deck extends React.Component {
 
   animateCard() {
     const { position } = this.state;
+    const rotate = position.x.interpolate({
+      inputRange: [-500, 0, 500],
+      outputRange: ['-120deg', '0deg', '120deg'],
+    });
+
     return {
       ...position.getLayout(),
       transform: [
         {
-          rotate: '45deg',
+          rotate,
         },
       ],
     };
