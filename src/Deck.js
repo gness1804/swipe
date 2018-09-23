@@ -4,11 +4,13 @@ import {
   View,
   Animated,
   PanResponder,
-  Dimensions,
 } from 'react-native';
-// import mainStyles from '../src/mainStyles/Deck';
+import {
+  SCREEN_WIDTH,
+  SWIPE_THRESHOLD,
+} from './data/static';
 
-const SCREEN_WIDTH = Dimensions.get('window').width;
+// import mainStyles from '../src/mainStyles/Deck';
 
 class Deck extends React.Component {
   constructor(props) {
@@ -25,7 +27,17 @@ class Deck extends React.Component {
           y: dy,
         });
       },
-      onPanResponderRelease: () => {
+      onPanResponderRelease: (e, gesture) => {
+        const { dx } = gesture;
+
+        if (dx > SWIPE_THRESHOLD) {
+          // callback to signify card was "liked"
+          return;
+        }
+        if (dx < -SWIPE_THRESHOLD) {
+          // callback to signify card was rejected
+          return;
+        }
         this.resetPosition();
       },
     });
@@ -49,7 +61,7 @@ class Deck extends React.Component {
   animateCard() {
     const { position } = this.state;
     const rotate = position.x.interpolate({
-      inputRange: [-SCREEN_WIDTH * 1.5, 0, SCREEN_WIDTH * 1.5],
+      inputRange: [(-SCREEN_WIDTH * 1.5), 0, (SCREEN_WIDTH * 1.5)],
       outputRange: ['-120deg', '0deg', '120deg'],
     });
 

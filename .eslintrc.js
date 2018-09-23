@@ -41,6 +41,7 @@ module.exports = {
     'react/jsx-no-bind': 'off',
     'class-methods-use-this': 'off',
     'no-unused-vars': 'warn',
+    'import/named': 'warn',
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0
   }
