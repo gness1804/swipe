@@ -3,6 +3,8 @@ import {
   View,
   Text,
   ToastAndroid,
+  Platform,
+  AlertIOS,
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
@@ -13,7 +15,11 @@ import data from './src/data/dummy';
 export default class App extends React.Component {
   renderOneCard(item) {
     const onButtonPressed = () => {
-      ToastAndroid.show('Button was pressed.', ToastAndroid.SHORT);
+      if (Platform.OS === 'android') {
+        ToastAndroid.show('Button was pressed.', ToastAndroid.SHORT);
+      } else if (Platform.OS === 'ios') {
+        AlertIOS.alert('Hello', 'Button Pressed.');
+      }
     };
 
     const { id, text, uri } = item;
