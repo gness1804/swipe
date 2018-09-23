@@ -9,7 +9,11 @@
     "eject": "expo eject",
     "lint": "eslint src App.js",
     "lint:fix": "npm run lint -- --fix",
-    "test": "echo 'no tests yet...'"
+    "test": "echo 'no tests yet...'",
+    "sites:open" : "open https://www.udemy.com/react-native-advanced/learn/v4/overview && open https://github.com/gness1804/swipe",
+    "publish": "expo publish",
+    "build:android": "expo build:android",
+    "build:ios": "expo build:ios"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
@@ -21,6 +25,7 @@
     "expo": "^29.0.0",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
+    "react-native-elements": "^0.19.1",
     "whatwg-fetch": "^2.0.4"
   }
 }
