@@ -8,6 +8,8 @@ import {
 import {
   SCREEN_WIDTH,
   SWIPE_THRESHOLD,
+  SWIPE_OUT_DURATION,
+  RESET_DURATION,
 } from './data/static';
 
 // import mainStyles from '../src/mainStyles/Deck';
@@ -31,11 +33,11 @@ class Deck extends React.Component {
         const { dx } = gesture;
 
         if (dx > SWIPE_THRESHOLD) {
-          // callback to signify card was "liked"
+          this.exitCardToRight();
           return;
         }
         if (dx < -SWIPE_THRESHOLD) {
-          // callback to signify card was rejected
+          this.exitCardToLeft();
           return;
         }
         this.resetPosition();
@@ -48,13 +50,36 @@ class Deck extends React.Component {
     };
   }
 
+  exitCardToLeft() {
+    const { position } = this.state;
+    Animated.timing(position, {
+      toValue: {
+        x: -SCREEN_WIDTH,
+        y: 0,
+      },
+      duration: SWIPE_OUT_DURATION,
+    }).start();
+  }
+
+  exitCardToRight() {
+    const { position } = this.state;
+    Animated.timing(position, {
+      toValue: {
+        x: SCREEN_WIDTH,
+        y: 0,
+      },
+      duration: SWIPE_OUT_DURATION,
+    }).start();
+  }
+
   resetPosition() {
-    Animated.spring(this.state.position, {
+    const { position } = this.state;
+    Animated.spring(position, {
       toValue: {
         x: 0,
         y: 0,
       },
-      tension: 30,
+      tension: RESET_DURATION,
     }).start();
   }
 
