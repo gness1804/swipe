@@ -61,28 +61,6 @@ class Deck extends React.Component {
     }).start();
   }
 
-  exitCardToLeft() {
-    const { position } = this.state;
-    Animated.timing(position, {
-      toValue: {
-        x: -SCREEN_WIDTH,
-        y: 0,
-      },
-      duration: SWIPE_OUT_DURATION,
-    }).start();
-  }
-
-  exitCardToRight() {
-    const { position } = this.state;
-    Animated.timing(position, {
-      toValue: {
-        x: SCREEN_WIDTH,
-        y: 0,
-      },
-      duration: SWIPE_OUT_DURATION,
-    }).start();
-  }
-
   resetPosition() {
     const { position } = this.state;
     Animated.spring(position, {
