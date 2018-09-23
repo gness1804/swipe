@@ -33,11 +33,11 @@ class Deck extends React.Component {
         const { dx } = gesture;
 
         if (dx > SWIPE_THRESHOLD) {
-          this.exitCardToRight();
+          this.removeCard('right');
           return;
         }
         if (dx < -SWIPE_THRESHOLD) {
-          this.exitCardToLeft();
+          this.removeCard('left');
           return;
         }
         this.resetPosition();
@@ -48,6 +48,17 @@ class Deck extends React.Component {
       responder,
       position,
     };
+  }
+
+  removeCard(dir) {
+    const { position } = this.state;
+    Animated.timing(position, {
+      toValue: {
+        x: dir === 'left' ? -SCREEN_WIDTH : SCREEN_WIDTH,
+        y: 0,
+      },
+      duration: SWIPE_OUT_DURATION,
+    }).start();
   }
 
   exitCardToLeft() {
