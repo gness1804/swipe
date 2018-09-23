@@ -10,7 +10,10 @@
     "lint": "eslint src App.js",
     "lint:fix": "npm run lint -- --fix",
     "test": "echo 'no tests yet...'",
-    "sites:open" : "open https://www.udemy.com/react-native-advanced/learn/v4/overview && open https://github.com/gness1804/swipe"
+    "sites:open" : "open https://www.udemy.com/react-native-advanced/learn/v4/overview && open https://github.com/gness1804/swipe",
+    "publish": "expo publish",
+    "build:android": "expo build:android",
+    "build:ios": "expo build:ios"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
