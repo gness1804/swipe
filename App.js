@@ -13,7 +13,8 @@ import cardStyles from './src/styles/card';
 import data from './src/data/dummy';
 
 export default class App extends React.Component {
-  renderOneCard(item) {
+  renderCard(item) {
+    // refactor to notify
     const onButtonPressed = () => {
       if (Platform.OS === 'android') {
         ToastAndroid.show('Button was pressed.', ToastAndroid.SHORT);
@@ -24,11 +25,11 @@ export default class App extends React.Component {
 
     const { id, text, uri } = item;
     return (<Card
-            key={id}
-            title={text}
-            image={{
-              uri,
-            }}
+              key={id}
+              title={text}
+              image={{
+                uri,
+              }}
             >
             <Text style={cardStyles.text}>Hello</Text>
             <Button
@@ -43,12 +44,34 @@ export default class App extends React.Component {
     );
   }
 
+  // notify(msg) {
+  //   if (msg) {
+  //     if (Platform.OS === 'android') {
+  //       ToastAndroid.show(msg, ToastAndroid.SHORT);
+  //     } else if (Platform.OS === 'ios') {
+  //       AlertIOS.alert('Hello', msg);
+  //     }
+  //   }
+  // }
+
+  onSwipeLeft(item) {
+
+    // this.notify(`${item.text} was rejected.`);
+  }
+
+  onSwipeRight(item) {
+
+    // this.notify(`${item.text} was liked.`);
+  }
+
   render() {
     return (
       <View style={mainStyles.container}>
         <Deck
             data={data}
-            renderCard={this.renderOneCard}
+            renderCard={this.renderCard}
+            onSwipeRight={this.onSwipeRight}
+            onSwipeLeft={this.onSwipeLeft}
         />
       </View>
     );

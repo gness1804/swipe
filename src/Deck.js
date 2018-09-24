@@ -15,6 +15,11 @@ import {
 // import mainStyles from '../src/mainStyles/Deck';
 
 class Deck extends React.Component {
+  static defaultProps = {
+    onSwipeRight: () => {},
+    onSwipeLeft: () => {},
+  };
+
   constructor(props) {
     super(props);
 
@@ -47,18 +52,20 @@ class Deck extends React.Component {
     this.state = {
       responder,
       position,
+      index: 0,
     };
   }
 
-  removeCard(dir) {
+  async removeCard(dir) {
     const { position } = this.state;
-    Animated.timing(position, {
+    await Animated.timing(position, {
       toValue: {
         x: dir === 'left' ? -SCREEN_WIDTH : SCREEN_WIDTH,
         y: 0,
       },
       duration: SWIPE_OUT_DURATION,
     }).start();
+    this.onSwipeComplete(dir);
   }
 
   resetPosition() {
@@ -70,6 +77,18 @@ class Deck extends React.Component {
       },
       tension: RESET_DURATION,
     }).start();
+  }
+
+  onSwipeComplete(dir) {
+    const { index } = this.state;
+    const { onSwipeLeft, onSwipeRight, data } = this.props;
+    const target = data[index];
+
+    if (dir === 'right') {
+      onSwipeRight(target);
+      return;
+    }
+    onSwipeLeft(target);
   }
 
   animateCard() {
