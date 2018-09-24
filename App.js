@@ -44,16 +44,6 @@ export default class App extends React.Component {
     );
   }
 
-  // notify(msg) {
-  //   if (msg) {
-  //     if (Platform.OS === 'android') {
-  //       ToastAndroid.show(msg, ToastAndroid.SHORT);
-  //     } else if (Platform.OS === 'ios') {
-  //       AlertIOS.alert('Hello', msg);
-  //     }
-  //   }
-  // }
-
   onSwipeLeft(item) {
 
     // this.notify(`${item.text} was rejected.`);

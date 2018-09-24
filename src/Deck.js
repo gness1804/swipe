@@ -79,16 +79,24 @@ class Deck extends React.Component {
     }).start();
   }
 
-  onSwipeComplete(dir) {
-    const { index } = this.state;
+  async onSwipeComplete(dir) {
+    const { index, position } = this.state;
     const { onSwipeLeft, onSwipeRight, data } = this.props;
     const target = data[index];
 
     if (dir === 'right') {
-      onSwipeRight(target);
-      return;
+      await onSwipeRight(target);
+    } else {
+      await onSwipeLeft(target);
     }
-    onSwipeLeft(target);
+
+    position.setValue({
+      x: 0,
+      y: 0,
+    });
+    this.setState({
+      index: index + 1,
+    });
   }
 
   animateCard() {
@@ -110,9 +118,9 @@ class Deck extends React.Component {
 
   renderAllCards() {
     const { data, renderCard } = this.props;
-    const { responder } = this.state;
-    return data.map((item, index) => {
-      if (index === 0) {
+    const { responder, index } = this.state;
+    return data.map((item, _index) => {
+      if (_index === index) {
         return (
             <Animated.View
                 style={this.animateCard()}
