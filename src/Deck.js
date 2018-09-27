@@ -119,8 +119,11 @@ class Deck extends React.Component {
   renderAllCards() {
     const { data, renderCard } = this.props;
     const { responder, index } = this.state;
-    return data.map((item, _index) => {
-      if (_index === index) {
+    return data.map((item, currCardIndex) => {
+      if (currCardIndex < index) {
+        return null;
+      }
+      if (currCardIndex === index) {
         return (
             <Animated.View
                 style={this.animateCard()}
