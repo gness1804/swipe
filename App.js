@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { Card, Button } from 'react-native-elements';
 import Deck from './src/Deck';
+import NoMoreCards from './src/NoMoreCards';
 import mainStyles from './src/styles/app';
 import cardStyles from './src/styles/card';
 import data from './src/data/dummy';
@@ -44,6 +45,23 @@ export default class App extends React.Component {
     );
   }
 
+  getMore() {
+
+    // if (Platform.OS === 'android') {
+    //   ToastAndroid.show('Getting more cards...', ToastAndroid.SHORT);
+    // } else if (Platform.OS === 'ios') {
+    //   AlertIOS.alert('Hello', 'Getting more cards...');
+    // }
+  }
+
+  renderNoMoreCards() {
+    return (
+        <NoMoreCards
+              getMore={this.getMore}
+        />
+    );
+  }
+
   onSwipeLeft(item) {
 
     // this.notify(`${item.text} was rejected.`);
@@ -55,13 +73,21 @@ export default class App extends React.Component {
   }
 
   render() {
+    const {
+      renderCard, onSwipeRight, onSwipeLeft, renderNoMoreCards,
+    } = this;
+
+    const attrs = {
+      data,
+      renderCard,
+      onSwipeRight,
+      onSwipeLeft,
+      renderNoMoreCards,
+    };
     return (
       <View style={mainStyles.container}>
         <Deck
-            data={data}
-            renderCard={this.renderCard}
-            onSwipeRight={this.onSwipeRight}
-            onSwipeLeft={this.onSwipeLeft}
+            {...attrs}
         />
       </View>
     );

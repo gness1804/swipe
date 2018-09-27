@@ -12,7 +12,7 @@ import {
   RESET_DURATION,
 } from './data/static';
 
-// import mainStyles from '../src/mainStyles/Deck';
+import styles from './styles/deck';
 
 class Deck extends React.Component {
   static defaultProps = {
@@ -117,8 +117,13 @@ class Deck extends React.Component {
   }
 
   renderAllCards() {
-    const { data, renderCard } = this.props;
+    const { data, renderCard, renderNoMoreCards } = this.props;
     const { responder, index } = this.state;
+
+    if (index >= data.length) {
+      return renderNoMoreCards();
+    }
+
     return data.map((item, currCardIndex) => {
       if (currCardIndex < index) {
         return null;
@@ -141,7 +146,7 @@ class Deck extends React.Component {
 
   render() {
     return (
-        <View>
+        <View style={styles.container}>
           {this.renderAllCards()}
         </View>
     );
