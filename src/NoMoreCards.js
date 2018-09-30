@@ -14,7 +14,6 @@ class NoMoreCards extends React.Component {
   }
 
   render() {
-    console.log('this.props:', this.props);
     return (
         <View style={styles.container}>
           <Text style={styles.text}>You are out of cards!</Text>
