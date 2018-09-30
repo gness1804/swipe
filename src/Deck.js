@@ -12,6 +12,7 @@ import {
   RESET_DURATION,
 } from './data/static';
 import styles from './styles/deck';
+import StaticCard from './StaticCard';
 
 class Deck extends React.Component {
   static defaultProps = {
@@ -138,9 +139,11 @@ class Deck extends React.Component {
             </Animated.View>
         );
       }
-      return (<View style={styles.cardStyle} key={item.id}>
-        {renderCard(item)}
-      </View>);
+      return <StaticCard
+        styleClass={styles.cardStyle}
+        key={item.id}
+        renderer={renderCard(item)}
+      />;
     }).reverse();
   }
 
