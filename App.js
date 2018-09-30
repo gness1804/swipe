@@ -15,7 +15,6 @@ import data from './src/data/dummy';
 
 export default class App extends React.Component {
   renderCard(item) {
-    // refactor to notify
     const onButtonPressed = () => {
       if (Platform.OS === 'android') {
         ToastAndroid.show('Button was pressed.', ToastAndroid.SHORT);

@@ -1,5 +1,6 @@
 
 import { StyleSheet } from 'react-native';
+import { SCREEN_HEIGHT } from '../data/static';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,7 +10,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: '#000',
-    marginTop: 300,
+    marginTop: SCREEN_HEIGHT / 2,
   },
 });
 

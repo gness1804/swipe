@@ -11,7 +11,6 @@ import {
   SWIPE_OUT_DURATION,
   RESET_DURATION,
 } from './data/static';
-
 import styles from './styles/deck';
 
 class Deck extends React.Component {
@@ -131,7 +130,7 @@ class Deck extends React.Component {
       if (currCardIndex === index) {
         return (
             <Animated.View
-                style={this.animateCard()}
+                style={[this.animateCard(), styles.cardStyle]}
                 key={item.id}
                 {...responder.panHandlers}
             >
@@ -139,8 +138,10 @@ class Deck extends React.Component {
             </Animated.View>
         );
       }
-      return renderCard(item);
-    });
+      return (<View style={styles.cardStyle} key={item.id}>
+        {renderCard(item)}
+      </View>);
+    }).reverse();
   }
 
 

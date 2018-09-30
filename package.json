@@ -3,7 +3,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
   "scripts": {
-    "dev": "expo start",
+    "dev": "npm run clean && expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "eject": "expo eject",
@@ -13,7 +13,8 @@
     "sites:open": "open https://www.udemy.com/react-native-advanced/learn/v4/overview && open https://github.com/gness1804/swipe",
     "publish": "expo publish",
     "build:android": "expo build:android",
-    "build:ios": "expo build:ios"
+    "build:ios": "expo build:ios",
+    "clean": "watchman watch-del-all && npm cache verify"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
