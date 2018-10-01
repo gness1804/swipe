@@ -1,9 +1,8 @@
 
 import React from 'react';
 import {
-  View,
+  Animated,
 } from 'react-native';
-// import styles from '../src/styles/StaticCard';
 
 class StaticCard extends React.Component {
   render() {
@@ -13,9 +12,9 @@ class StaticCard extends React.Component {
     } = this.props;
 
     return (
-        <View style={styleClass}>
+        <Animated.View style={styleClass}>
           {renderer}
-        </View>
+        </Animated.View>
     );
   }
 }
