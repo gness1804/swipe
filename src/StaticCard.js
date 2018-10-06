@@ -11,7 +11,6 @@ class StaticCard extends React.Component {
       styleClass,
       renderer,
     } = this.props;
-    //
 
     return (
         <Animated.View style={styleClass}>

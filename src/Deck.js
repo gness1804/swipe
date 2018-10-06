@@ -4,6 +4,8 @@ import {
   View,
   Animated,
   PanResponder,
+  LayoutAnimation,
+  UIManager,
 } from 'react-native';
 import {
   SCREEN_WIDTH,
@@ -55,6 +57,14 @@ class Deck extends React.Component {
       index: 0,
     };
   }
+
+  componentWillUpdate() {
+    if (UIManager.setLayoutAniminationEnabledExperimental) {
+      UIManager.setLayoutAniminationEnabledExperimental(true);
+      LayoutAnimation.spring();
+    }
+  }
+
 
   async removeCard(dir) {
     const { position } = this.state;
