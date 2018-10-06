@@ -140,7 +140,7 @@ class Deck extends React.Component {
         );
       }
       return <StaticCard
-        styleClass={styles.cardStyle}
+        styleClass={[styles.cardStyle, { top: 10 * (currCardIndex - index) }]}
         key={item.id}
         renderer={renderCard(item)}
       />;

@@ -14,16 +14,17 @@
     "publish": "expo publish",
     "build:android": "expo build:android",
     "build:ios": "expo build:ios",
-    "clean": "watchman watch-del-all && npm cache verify"
+    "clean": "watchman watch-del-all && rm -fr $TMPDIR/react-* && npm cache verify"
   },
   "dependencies": {
     "babel-eslint": "^9.0.0",
-    "eslint": "^5.6.0",
+    "eslint": "^5.6.1",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "expo": "^29.0.0",
+    "prop-types": "^15.6.2",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-native-elements": "^0.19.1",

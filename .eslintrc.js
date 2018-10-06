@@ -11,6 +11,9 @@ module.exports = {
     browser: true,
   },
   extends: ['airbnb-base'],
+  plugins: [
+      'react',
+  ],
   // check if imports actually resolve
   // 'settings': {
   //   'import/resolver': {
@@ -35,7 +38,7 @@ module.exports = {
     // React-specific rules: delete if not using React
     'react/prefer-stateless-function': 'off',
     'react/jsx-filename-extension': 'off',
-    'react/prop-types': 'off',
+    'react/prop-types': 'error',
     'react/jsx-equals-spacing': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
     'react/jsx-no-bind': 'off',
