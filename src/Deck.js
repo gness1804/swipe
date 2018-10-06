@@ -58,6 +58,14 @@ class Deck extends React.Component {
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.data !== this.props.data) {
+      this.setState({
+        index: 0,
+      });
+    }
+  }
+
   componentWillUpdate() {
     if (UIManager.setLayoutAniminationEnabledExperimental) {
       UIManager.setLayoutAniminationEnabledExperimental(true);
